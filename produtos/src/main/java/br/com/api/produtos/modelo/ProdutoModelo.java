@@ -8,15 +8,15 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-
 @Entity
 @Table(name = "produtos")
+
 @Getter
 @Setter
 
 public class ProdutoModelo {
     
-
+   
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
 
