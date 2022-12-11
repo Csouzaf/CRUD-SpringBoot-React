@@ -19,7 +19,10 @@ function Formulario ({ botao }) {
             {
                 botao 
                 ? 
-                <input className=" mt-3 space-x-2 sm:space-x-4 sm:ml-4 flex justify-center text-xs px-2 py-1 sm:p-3 cursor-pointer bg-sky-400 rounded-lg " type="button" value="Cadastrar" />
+                <div className="flex justify-center">
+                     <input className=" mt-3 sm:ml-4 text-xs px-2 py-1 sm:p-3 cursor-pointer bg-sky-400 rounded-lg " type="button" value="Cadastrar" />
+                </div>
+            
                 :
                 <div className="container mt-3 space-x-2 sm:space-x-4 sm:ml-4 flex justify-center ">
                 
