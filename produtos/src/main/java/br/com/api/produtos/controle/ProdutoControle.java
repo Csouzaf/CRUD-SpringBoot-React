@@ -29,11 +29,10 @@ public class ProdutoControle {
     }
 
     @PostMapping("/cadastrar")
- 
+    
     public ResponseEntity<?> cadastrar(@RequestBody ProdutoModelo pm) {
         return ps.cadastrarAlterar(pm, "cadastrar");
     }
-
 
     @DeleteMapping("/remover/{codigo}")
     public ResponseEntity<RespostaModelo> remover(@PathVariable long codigo) {
@@ -46,6 +45,7 @@ public class ProdutoControle {
         return ps.listar();
     };
 
+    
     @GetMapping("/")
     public String rota(){
         return "API de produtos funcionando!";

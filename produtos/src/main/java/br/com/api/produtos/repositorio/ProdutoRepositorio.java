@@ -1,5 +1,5 @@
 package br.com.api.produtos.repositorio;
-//Responsável pelas ações do banco de dados
+
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
