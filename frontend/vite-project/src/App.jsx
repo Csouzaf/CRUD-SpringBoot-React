@@ -46,6 +46,7 @@ function App(){
   const cadastrar = () => {
     fetch("http://localhost:8080/cadastrar",  { 
 
+      method:'POST',
       body: JSON.stringify(objProduto), 
       headers: {
         'Content-type': 'application/json',
