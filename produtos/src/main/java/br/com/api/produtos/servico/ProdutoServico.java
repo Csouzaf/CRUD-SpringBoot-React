@@ -33,7 +33,7 @@ public class ProdutoServico {
 
         else if(pm.getMarca().equals("")) {
             
-            rm.setMensagem("O nome do produto é obrigatório");
+            rm.setMensagem("A marca do produto é obrigatório");
             return new ResponseEntity<RespostaModelo>(rm, HttpStatus.BAD_GATEWAY);
         }
 

@@ -15,21 +15,19 @@ import br.com.api.produtos.modelo.ProdutoModelo;
 import br.com.api.produtos.modelo.RespostaModelo;
 import br.com.api.produtos.servico.ProdutoServico;
 
+@CrossOrigin(origins = "*")
 @RestController 
-@CrossOrigin(origins = "*") 
 public class ProdutoControle {
 
     @Autowired 
     private ProdutoServico ps;
 
     @PutMapping("/alterar")
-    
     public ResponseEntity<?> alterar(@RequestBody ProdutoModelo pm) {
         return ps.cadastrarAlterar(pm,"alterar");
     }
 
     @PostMapping("/cadastrar")
-    
     public ResponseEntity<?> cadastrar(@RequestBody ProdutoModelo pm) {
         return ps.cadastrarAlterar(pm, "cadastrar");
     }

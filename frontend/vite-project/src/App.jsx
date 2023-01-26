@@ -5,11 +5,12 @@ import Tabela from "./Tabela";
 
 function App(){
     
- 
+
   const produto ={
     codigo: 0,
     nome: '',
     marca: ''
+
   }
 
   const[btnCadastrar, setBtnCadastrar] = useState(true)
@@ -17,7 +18,7 @@ function App(){
 
   const[objProduto, setobjProduto] = useState(produto)
 
-  useEffect(( ) => {
+  useEffect(() => {
     
     fetch("http://localhost:8080/listar") 
     .then(retorno => retorno.json())
@@ -38,6 +39,10 @@ function App(){
   }
 
 
+  const limparFormulario = () => {
+    setobjProduto(produto);
+  }
+  
   const cadastrar = () => {
     fetch("http://localhost:8080/cadastrar",  { 
 
@@ -49,17 +54,17 @@ function App(){
     }) 
     .then(retorno => retorno.json()) 
     .then(retorno_convertido =>  {
-      console.log(retorno_convertido)
 
-   
-      if(retorno_convertido !== undefined) {
-        alert(retorno_convertido.mensagem)
-      }
-      else{
-        
-        setProdutos([ ...produtos, retorno_convertido ])
-        alert('Produto cadastrado com sucesso!')
-      }
+        if(retorno_convertido.mensagem !== undefined) {
+          alert(retorno_convertido.mensagem)
+        }
+        else{
+          
+          setProdutos([ ...produtos, retorno_convertido ])
+          alert('Produto cadastrado com sucesso!')
+         
+          limparFormulario()
+        } 
 
     })
   }
@@ -67,9 +72,13 @@ function App(){
 
   return (
   <div className="">
-    
-   
-    <Formulario botao = { btnCadastrar } eventoTeclado = { aoDigitar } cadastrarItens = { cadastrar }/>
+ 
+    <Formulario botao = { btnCadastrar } 
+    eventoTeclado = { aoDigitar }
+    cadastrar = { cadastrar } 
+    objetoProduto = { objProduto }
+    />
+
     <Tabela vetor = { produtos }/>
   
   </div>
