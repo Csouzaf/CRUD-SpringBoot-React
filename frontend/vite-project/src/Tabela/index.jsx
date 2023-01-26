@@ -1,4 +1,4 @@
-function Tabela ({ vetor }) {
+function Tabela ({ vetor, selecionar }) {
     return (
 
        <table className=" container text-left">
@@ -21,7 +21,7 @@ function Tabela ({ vetor }) {
                             <td>{ obj.nome }</td>
                             <td>{ obj.marca }</td>
                             <td>
-                                <button className="bg-green-500 rounded-lg border-2 p-1 text-xs ">Selecionar</button>
+                                <button onClick={ () => { selecionar(indice) } } className="bg-green-500 rounded-lg border-2 p-1 text-xs ">Selecionar</button>
                             </td>
                         </tr>
                     ))

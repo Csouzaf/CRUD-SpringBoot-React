@@ -41,8 +41,14 @@ function App(){
 
   const limparFormulario = () => {
     setobjProduto(produto);
-  }
+    setBtnCadastrar(true) 
   
+  //Obter o produto a partir da posição do índice
+  const selecionarProduto = (indice) => {
+    setobjProduto(produtos[indice]) //Para ter o código, nome e marca do produto
+    setBtnCadastrar(false) //Alterar remover ou cancelar a ação pra o cancelamento ficar ocultado
+  }
+
   const cadastrar = () => {
     fetch("http://localhost:8080/cadastrar",  { 
 
@@ -70,21 +76,48 @@ function App(){
     })
   }
 
+  const remover = () => {
+    fetch("http://localhost:8080/remover" + objProduto.codigo, {
+
+    method:'DELETE',
+    headers: {
+      'Content-type' : 'application/json',
+      'Accept' : 'application/json'
+    }
+
+    }).then(retorno => retorno.json())
+      .then(retorno_convertido => {
+        
+        alert(retorno_convertido.mensagem)
+        //Precisa fazer uma cópia, alterar e depois remover
+
+        //Cópia vetor de produtos
+
+        let vetorTemp = [...produtos]
+        //Saber a posição do vetor para remover
+      })
+  }
 
   return (
   <div className="">
  
-    <Formulario botao = { btnCadastrar } 
-    eventoTeclado = { aoDigitar }
-    cadastrar = { cadastrar } 
-    objetoProduto = { objProduto }
+    <Formulario 
+      botao = { btnCadastrar } 
+      eventoTeclado = { aoDigitar }
+      cadastrar = { cadastrar } 
+      objetoProduto = { objProduto }
+      cancelar = { limparFormulario }
     />
 
-    <Tabela vetor = { produtos }/>
+    <Tabela
+      vetor = { produtos } 
+      selecionar = { selecionarProduto }
+    />
   
   </div>
  
  )
 
+}
 }
 export default App

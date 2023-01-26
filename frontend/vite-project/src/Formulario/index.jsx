@@ -1,4 +1,4 @@
-function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto }) {
+function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto, cancelar }) {
 
     return (
         <form>
@@ -33,7 +33,7 @@ function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto }) {
                 
                     <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-yellow-500 rounded-lg" type="button" value="Alterar" />
                     <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-red-600 rounded-lg" type="button" value="Remover" />
-                    <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-slate-500 rounded-lg" type="button" value="Cancelar" />
+                    <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-slate-500 rounded-lg" type="button" onClick={ cancelar } value="Cancelar" />
                 </div>
      
             }
