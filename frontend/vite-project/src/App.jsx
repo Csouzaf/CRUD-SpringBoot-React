@@ -3,6 +3,8 @@ import { useState } from "react";
 import Formulario from "./Formulario";
 import Tabela from "./Tabela";
 
+
+
 function App(){
     
 
@@ -43,10 +45,10 @@ function App(){
     setobjProduto(produto);
     setBtnCadastrar(true) 
   
-  //Obter o produto a partir da posição do índice
+  }
   const selecionarProduto = (indice) => {
-    setobjProduto(produtos[indice]) //Para ter o código, nome e marca do produto
-    setBtnCadastrar(false) //Alterar remover ou cancelar a ação pra o cancelamento ficar ocultado
+    setobjProduto(produtos[indice]) 
+    setBtnCadastrar(false) 
   }
 
   const cadastrar = () => {
@@ -57,8 +59,8 @@ function App(){
       headers: {
         'Content-type': 'application/json',
         'Accept': 'application/json'
-      }
-    }) 
+    }
+  }) 
     .then(retorno => retorno.json()) 
     .then(retorno_convertido =>  {
 
@@ -77,9 +79,10 @@ function App(){
   }
 
   const remover = () => {
-    fetch("http://localhost:8080/remover" + objProduto.codigo, {
+    fetch("http://localhost:8080/remover/" + objProduto.codigo, {
 
     method:'DELETE',
+    body: JSON.stringify(objProduto),
     headers: {
       'Content-type' : 'application/json',
       'Accept' : 'application/json'
@@ -89,12 +92,21 @@ function App(){
       .then(retorno_convertido => {
         
         alert(retorno_convertido.mensagem)
-        //Precisa fazer uma cópia, alterar e depois remover
-
-        //Cópia vetor de produtos
+        
 
         let vetorTemp = [...produtos]
-        //Saber a posição do vetor para remover
+
+    
+        let indice = vetorTemp.findIndex((p) => {
+          return p.codigo ===  objProduto.codigo
+        })
+       
+        vetorTemp.splice(indice, 1)
+
+        setProdutos(vetorTemp)
+
+        limparFormulario()
+      
       })
   }
 
@@ -107,6 +119,7 @@ function App(){
       cadastrar = { cadastrar } 
       objetoProduto = { objProduto }
       cancelar = { limparFormulario }
+      removerProduto = { remover }
     />
 
     <Tabela
@@ -119,5 +132,5 @@ function App(){
  )
 
 }
-}
+
 export default App
