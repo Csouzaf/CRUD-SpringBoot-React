@@ -1,4 +1,4 @@
-function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto, cancelar, removerProduto }) {
+function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto, cancelar, removerProduto, alterarProduto }) {
 
     return (
         <form>
@@ -31,7 +31,7 @@ function Formulario ({ botao, eventoTeclado, cadastrar, objetoProduto, cancelar,
                 :
                 <div className="container mt-3 space-x-2 sm:space-x-4 sm:ml-4 flex justify-center ">
                 
-                    <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-yellow-500 rounded-lg" type="button" value="Alterar" />
+                    <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-yellow-500 rounded-lg" type="button" onClick={ alterarProduto } value="Alterar" />
                     <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-red-600 rounded-lg" type="button" onClick={ removerProduto } value="Remover" />
                     <input className=" text-xs px-2 py-1 sm:p-3 cursor-pointer bg-slate-500 rounded-lg" type="button" onClick={ cancelar } value="Cancelar" />
                 </div>
